@@ -1,8 +1,8 @@
 # app.py
-# This is a frst test commit
+# This is a frst  commit
 def add(a, b):
     return a + b
 
 
 if __name__ == "__main__":
-    print(add(2, 3))
+    print(add(2, 4))
