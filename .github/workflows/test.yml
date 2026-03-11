@@ -30,13 +30,15 @@ jobs:
       # Step 4: Run your script
       - name: Run addition.py
         run: python addition.py
-
+      - name: Build with Maven 
+        run: mvn -B package --file pom.xml
+        
       - name: SonarCloud Scan
-        env:
+        uses: SonarSource/sonarcloud-github-action@v2
+        with: 
+          args: > 
+            -Dsonar.projectKey=hari170998_exgithubaction 
+            -Dsonar.organization=hari170998 
+        env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn sonar:sonar \
-          -Dsonar.projectKey=hari170998_exgithubaction \
-          -Dsonar.organization=hari170998 \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${SONAR_TOKEN}
   
